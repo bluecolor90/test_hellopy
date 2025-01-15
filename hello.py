@@ -1,3 +1,3 @@
 print('hellothere!!')
 print("i can't understand, isit begovin?")
-print('re-login to bluecolor90')
+print('invite begovin')

@@ -27,25 +27,43 @@
 - 작업시작전, push직전 원격수정사항을 pull 하여 검토 필수
     - 단일 branch로 작업하므로 충돌 발생시 되돌리는 과정이 어려워질 수 있음
     - refork혹은 branch로 작업시 여러명의 작업결과물을 구분하여 볼 수 있음
-    - conflict 발생예시 및 시도방법
-        1. 원격수정사항을 fetch하지않고 수정작업진행 (권장x) 
-            - ![commit w.o. pull](image-6.png)
-            - commit ![commit](image-7.png)
-        1. 다른멤버가 그사이 commit한 곳과 비슷한부분을 수정함
-            - 다른멤버 source control graph
-            - ![other modifications from remote changes](image-8.png)
-            - vscode는 주기적으로 origin쪽을 fetch해와서 해당부분을 source control graph에서 확인가능함(아래)
-            - ![source control graph from local](image-9.png)
-        1. 해당상황에서 원격수정사항과 비슷한부분 push 진행할시 pull 경고발생하여 push불가
-            - ![try pull](image-10.png)
-        1. pull 진행시 수정사항과 동일한 라인의 수정사항은 conflict 발생하여 오류발생
-            - ![pull error](image-12.png)
-    - pull conflict 해결1. commit된 내용이 있을경우
-        1. branch를 만들어 회피
-            - ![create branch](image-13.png)
-            - ![branch](image-14.png)
-        1. unstage되어있던것도 모두 commit (만들어놓은 `conflict_test` branch로 commit됨)
-            - ![conflit_test branch](image-16.png)
-        main브랜치로 복귀 (cherry pick) 
-            - ![cherry pick](image-15.png)
-
+## conflict 발생예시 및 시도방법
+1. 원격수정사항을 fetch하지않고 수정작업진행 (권장x) 
+    - ![commit w.o. pull](image-6.png)
+    - commit ![commit](image-7.png)
+1. 다른멤버가 그사이 commit한 곳과 비슷한부분을 수정함
+    - 다른멤버 source control graph
+    - ![other modifications from remote changes](image-8.png)
+    - vscode는 주기적으로 origin쪽을 fetch해와서 해당부분을 source control graph에서 확인가능함(아래)
+    - ![source control graph from local](image-9.png)
+1. 해당상황에서 원격수정사항과 비슷한부분 push 진행할시 pull 경고발생하여 push불가
+    - ![try pull](image-10.png)
+1. pull 진행시 수정사항과 동일한 라인의 수정사항은 conflict 발생하여 오류발생
+    - ![pull error](image-12.png)
+### pull conflict 해결1. commit된 내용이 있을경우
+- `main` branch에서 conflict 발생했고, commit되어있는경우
+1. branch를 만들어 회피 (`conflict_test` 브랜치로 생성)<div style="text-align: center:"><img src="image-13.png" alt="create branch" widht="100"></div>
+    - ![create branch](image-13.png)
+    - ![branch](image-14.png)
+1. unstage되어있던것도 모두 commit (만들어놓은 `conflict_test` branch로 commit됨)
+    - ![conflit_test branch](image-16.png)
+1. publich branch (필요한지모르겠음)
+    - ![publish branch](resources/image1-3.png)
+1. 돌아와서 conflict발생한 로컬수정사항 모두 원복 undo commit 
+    - ![alt text](resources/image1-5.png)
+    - unstage all changes ![alt text](resources/image1-8.png)
+    - discard all changes![alt text](resources/image1-7.png)
+    - ![alt text](resources/image1-6.png)
+1. conflict발생했던 원본의 수정사항 pull
+    - ![alt text](resources/image1-9.png)
+1. main브랜치에서 conflict_test 브랜치 merge
+    - ![alt text](resources/image1-10.png)
+    - ![alt text](resources/image1-11.png)
+1. 충돌사항resolve, 이상태에서는 incomming을 accept하든, reject하든 관계없음(맞는방향으로)
+    - ![alt text](resources/image1-12.png)
+1. 수정후 resolve (에디터상 resolve file 혹은 stage file)
+    - ![alt text](resources/image1-13.png)
+    - ![alt text](resources/image1-14.png)
+1. commit & push
+    - ![alt text](resources/image1-15.png)
+    - ![alt text](resources/image1-16.png)

@@ -24,9 +24,26 @@
     - commit된 수정사항들만 저장소에 반영됨
     - vscode에서 stage ~ push를 동시에 진행할 수는 있음
 ## 필수 workflow
-- 작업시작전에 원격수정사항을 pull 하여 검토하는건 필수
+- 작업시작전, push직전 원격수정사항을 pull 하여 검토 필수
     - 단일 branch로 작업하므로 충돌 발생시 되돌리는 과정이 어려워질 수 있음
     - refork혹은 branch로 작업시 여러명의 작업결과물을 구분하여 볼 수 있음
-    - conflict 발생예시
-        1. 원격수정사항을 fetch하지않고 수정작업진행 (권장x) ![commit w.o. pull](image-6.png)
-        1.
+    - conflict 발생예시 및 시도방법
+        1. 원격수정사항을 fetch하지않고 수정작업진행 (권장x) 
+            - ![commit w.o. pull](image-6.png)
+            - commit ![commit](image-7.png)
+        1. 다른멤버가 그사이 commit한 곳과 비슷한부분을 수정함
+            - 다른멤버 source control graph
+            - ![other modifications from remote changes](image-8.png)
+            - vscode는 주기적으로 origin쪽을 fetch해와서 해당부분을 source control graph에서 확인가능함(아래)
+            - ![source control graph from local](image-9.png)
+        1. 해당상황에서 원격수정사항과 비슷한부분 push 진행할시 pull 경고발생하여 push불가
+            - ![try pull](image-10.png)
+        1. pull 진행시 수정사항과 동일한 라인의 수정사항은 conflict 발생하여 오류발생
+            - ![pull error](image-12.png)
+    - pull conflict 해결1. commit된 내용이 있을경우
+        1. branch를 만들어 회피
+            - ![create branch](image-13.png)
+            - ![branch](image-14.png)
+        2. main브랜치로 복귀 (cherry pick) 
+            - ![cherry pick](image-15.png)
+

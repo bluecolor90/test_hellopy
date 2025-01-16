@@ -24,6 +24,7 @@
 - commit : 로컬 저장소로 수정사항 업로드, 깃헙에는 게시되지 않은상태임
     - 단, 로컬 저장소도 혼자 소스코드를 관리하는 구역임
     - 그러므로 이부분에서 이전 상태로 돌아가거나 브랜치로 코드를 분기하는 등의 기능을 할 수 있음
+    - 로컬에 commit된걸 되돌리는 것도 절차가 있으므로 주의
 - push : 깃헙으로 게시
     - 혼자 작업할 경우 commit과 push가 비슷한 기능을 한다고 보면되나
     - 단, commit만으로는 깃헙에 반영되지 않음
@@ -33,7 +34,9 @@
     - 단일 branch로 작업하므로 충돌 발생시 되돌리는 과정이 어려워질 수 있음 (이경우 conflict 발생사례 확인)
     - refork혹은 branch로 작업시 여러명의 작업결과물을 구분하여 볼 수 있음
 - stage & commit & push : 권장하지않으나 원격저장소에 수정사항이 전혀없는 혼자 작업한다면 상태라면, 동시에 진행해도될듯함 <div style="text-align: center:"><img src="resources\image-15.png" alt="commit&push" width="600"></div>
-
+- commit messege 없이 업로드할수는 없음, 공란으로 commit 진행시 vscode에서는 아래와같이 수정내역 올리는 임시파일 보여줌 <div style="text-align: center:"><img src="resources\image2-1.png" alt="commit&push" width="600"></div>
+    - `#` 으로시작되는 줄은 무시됨
+    - modification 내역 파일들은 주석제거해서 업로드하는게 좋은편(이력관리), 안해도 모든 staged된 파일들 commit됨
 ## 단일브랜치, 소규모 협업방법 상세
 1. 시작전에 원격수정사항을 pull <div style="text-align: center:"><img src="resources\image-5.png" alt="remote changes from other members" width="600"></div>
     - 로컬 수정사항인 <브랜치이름> 의 반영단계가 origin/<브랜치이름>

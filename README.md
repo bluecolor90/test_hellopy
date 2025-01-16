@@ -44,6 +44,8 @@
         1. branch를 만들어 회피
             - ![create branch](image-13.png)
             - ![branch](image-14.png)
-        2. main브랜치로 복귀 (cherry pick) 
+        1. unstage되어있던것도 모두 commit (만들어놓은 `conflict_test` branch로 commit됨)
+            - ![conflit_test branch](image-16.png)
+        main브랜치로 복귀 (cherry pick) 
             - ![cherry pick](image-15.png)
 

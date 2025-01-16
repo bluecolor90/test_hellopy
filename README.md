@@ -38,15 +38,21 @@
     - `#` 으로시작되는 줄은 무시됨
     - modification 내역 파일들은 주석제거해서 업로드하는게 좋은편(이력관리), 안해도 모든 staged된 파일들 commit됨
 ## 단일브랜치, 소규모 협업방법 상세
-1. 시작전에 원격수정사항을 pull <div style="text-align: center:"><img src="resources\image-5.png" alt="remote changes from other members" width="600"></div>
+1. 시작전에 원격수정사항을 pull 
+    - ![before pull](image.png)
     - 로컬 수정사항인 <브랜치이름> 의 반영단계가 origin/<브랜치이름>
+    - ![after pull](image-2.png)
     - 원격수정사항이 로컬에 반영되어있지않은상태, pull로 반영후 작업
     - fetch로 미리 수정사항 확인가능, vscode는 자동으로 fetch해주는듯함
-1. unstaged, 로컬에 수정사항 발생시 changes에 수정사항 발생 <div style="text-align: center:"><img src="image.png" alt="remote changes - before" width="600"></div> <div style="text-align: center:"><img src="resources\image-1.png" alt="remote changes - before commit" width="600"></div>
-1. staged changes, 수정사항을 stage, <div style="text-align: center:"><img src="resources\image-2.png" alt="stage modifications" width="600"></div>
+1. unstaged, 로컬에 수정사항 발생시 changes에 수정사항 발생 
+    - ![unstaged](image-1.png)
+1. staged changes, 수정사항을 stage,
+    - ![staged](image-4.png)
     - 로컬/원격 저장소로 어떠한정보도 업로드되지않은상태
     - stage한 이후의 수정사항은 추가로 stage하지않는이상 commit에 포함되지않음
+    - ![staged and changed](image-3.png)
 1. commit : stage단계의 수정사항들을 push 준비
+    - ![before commit](image-5.png)
     - (주의) 수정사항이 저장소로 업로드되진 않은상태, 로컬 소스관리에서 확정한상태라고 보면됨 <div style="text-align: center:"><img src="resources\image-3.png" alt="commit modifications" width="600"></div>
         - 로컬 장소인 main 만 리비전그래프가 갱신됨
         - push하기 전까지는 로컬 저장소인 main에만 반영되어있는모습
